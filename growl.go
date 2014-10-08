@@ -37,6 +37,7 @@ type Options struct {
 	Url      string
 	Sticky   bool
 	Priority int
+	Image    string
 }
 
 func quote(s string) string {
@@ -73,6 +74,19 @@ func Notify(msg string, opts Options) {
 		}
 		if opts.Sound != "" {
 			args = append(args, c.Sound, opts.Sound)
+		}
+		break
+
+	case "Windows":
+		args = append(args, quote(msg))
+		if opts.Image != "" {
+			args = append(args, c.Icon+quote(opts.Image))
+		}
+		if opts.Title != "" {
+			args = append(args, c.Title+quote(opts.Title))
+		}
+		if opts.Url != "" {
+			args = append(args, c.Subtitle+quote(opts.Url))
 		}
 		break
 	}
