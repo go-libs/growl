@@ -10,9 +10,9 @@ func getCmd() Command {
 		Title:  "/t:",
 		Icon:   "/i:",
 		Url:    "/cu:",
-		Priority: Priority{
+		Priority: &Priority{
 			Cmd:   "/p:",
-			Range: []interface{}{-2, -1, 0, 1, 2},
+			Range: []string{"-2", "-1", "0", "1", "2"},
 		},
 	}
 }

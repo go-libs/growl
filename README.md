@@ -13,8 +13,8 @@ go get -U github.com/go-libs/growl
 ```go
 import "github.com/go-libs/growl"
 
-growl.Notify("Hello Growl!", growl.Options{
-    Title:    "Growl in Golang",
+growl.Notify("Hello Growl", growl.Options{
+    Title:    "Growl for Golang",
     Subtitle: "go-growl",
     Url:      "https://github.com/go-libs/growl",
     Sound:    "Tink",

@@ -12,9 +12,9 @@ func getCmd() Command {
 			Subtitle: "-subtitle",
 			Sound:    "-sound",
 			Url:      "-open",
-			Priority: Priority{
+			Priority: &Priority{
 				Cmd:   "-execute",
-				Range: []interface{}{},
+				Range: []string{},
 			},
 		}
 	} else {
@@ -23,9 +23,9 @@ func getCmd() Command {
 			Pkg:    "growlnotify",
 			Msg:    "-m",
 			Sticky: "--sticky",
-			Priority: Priority{
+			Priority: &Priority{
 				Cmd:   "--priority",
-				Range: []interface{}{-2, -1, 0, 1, 2, "Very Low", "Moderate", "Normal", "High", "Emergency"},
+				Range: []string{"-2", "-1", "0", "1", "2", "Very Low", "Moderate", "Normal", "High", "Emergency"},
 			},
 		}
 	}
