@@ -42,6 +42,7 @@ type Options struct {
 	Sticky   bool
 	Priority string
 	Image    string
+	Exec     string
 }
 
 func quote(s string) string {
@@ -53,7 +54,15 @@ func Which(appName string) (string, error) {
 }
 
 func Notify(msg string, opts Options) {
-	c := getCmd()
+	var c Command
+	if opts.Exec != "" {
+		c = Command{
+			Type: "Custom",
+			Pkg:  opts.Exec,
+		}
+	} else {
+		c = getCmd()
+	}
 	args := []string{}
 
 	if opts.Sticky {
@@ -158,6 +167,13 @@ func Notify(msg string, opts Options) {
 		if opts.Url != "" {
 			args = append(args, c.Subtitle+quote(opts.Url))
 		}
+		break
+
+	case "Custom":
+		if opts.Title != "" {
+			msg = opts.Title + ": " + msg
+		}
+		args = append(args, quote(msg))
 		break
 	}
 
