@@ -2,6 +2,8 @@ Growl for Golang
 ----------------
 Growl support for Go. A port of [visionmedia/node-growl][].
 
+View the [docs][].
+
 ### Installation
 
 ```
@@ -23,3 +25,4 @@ growl.Notify("Hello Growl", growl.Options{
 
 
 [visionmedia/node-growl]: https://github.com/visionmedia/node-growl
+[docs]: http://godoc.org/github.com/go-libs/growl
