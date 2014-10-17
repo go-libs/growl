@@ -181,7 +181,6 @@ func Notify(msg string, opts Options) {
 	if c.Activate != "" {
 		args = append(args, c.Activate)
 	}
-	log.Println(args)
 
 	cmd := exec.Command(c.Pkg, args...)
 	cmd.Stdout = os.Stdout
