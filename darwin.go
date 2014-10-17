@@ -1,6 +1,8 @@
 // +build darwin
 package growl
 
+import "os"
+
 func getCmd() Command {
 	var c Command
 	if _, err := Which("terminal-notifier"); err == nil {
@@ -29,6 +31,15 @@ func getCmd() Command {
 			},
 		}
 	}
+
+	var activate string
+	terminal := os.Getenv("TERM_PROGRAM")
+	if terminal == "iTerm.app" {
+		activate = "com.googlecode.iterm2"
+	} else {
+		activate = "com.apple.Terminal"
+	}
+	c.Activate = "-activate " + activate
 
 	return c
 }

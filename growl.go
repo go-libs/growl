@@ -31,6 +31,7 @@ type Command struct {
 	Url      string
 	Priority *Priority
 	Host     *Host
+	Activate string
 }
 
 type Options struct {
@@ -176,6 +177,11 @@ func Notify(msg string, opts Options) {
 		args = append(args, quote(msg))
 		break
 	}
+
+	if c.Activate != "" {
+		args = append(args, c.Activate)
+	}
+	log.Println(args)
 
 	cmd := exec.Command(c.Pkg, args...)
 	cmd.Stdout = os.Stdout
